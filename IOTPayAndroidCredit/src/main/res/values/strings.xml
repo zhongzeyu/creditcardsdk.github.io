@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">creditsdk</string>
+    <string name="card_num_default">Card number</string>
+    <string name="card_num">Card#</string>
+    <string name="mmyy_default">MM/YY</string>
+    <string name="cvc_default">CVV</string>
+    <string name="cvc">CVV</string>
+    <string name="holder_default">Name of holder</string>
+    <string name="holder_name">Name</string>
+    <string name="cardnumber_invalid">Card number is invalid</string>
+    <string name="cardmmyy_invalid">MM/YY  is invalid</string>
+    <string name="cardcvc_invalid">CVV  is invalid</string>
+    <string name="secureid_invalid">secureID  is invalid</string>
+    <string name="holder_invalid">Name of holder is invalid</string>
+
+</resources>

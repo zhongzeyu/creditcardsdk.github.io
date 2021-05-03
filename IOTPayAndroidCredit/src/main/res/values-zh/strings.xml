@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">creditsdk</string>
+    <string name="card_num_default">卡号</string>
+    <string name="card_num">卡号</string>
+    <string name="mmyy_default">MM/YY</string>
+    <string name="cvc_default">CVV</string>
+    <string name="cvc">CVV</string>
+    <string name="holder_default">持卡人姓名</string>
+    <string name="holder_name">姓名</string>
+    <string name="cardnumber_invalid">卡号非法</string>
+    <string name="cardmmyy_invalid">过期时间非法</string>
+
+    <string name="cardcvc_invalid">CVC非法</string>
+    <string name="secureid_invalid">secureID非法</string>
+    <string name="holder_invalid">姓名非法</string>
+</resources>
