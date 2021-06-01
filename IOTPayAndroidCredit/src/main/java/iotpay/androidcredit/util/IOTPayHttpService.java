@@ -24,6 +24,7 @@ public class IOTPayHttpService {
     private void executeTask(Runnable run) {
             IOTPayThreadPoolManager.executeInCachePool(run);
     }
+
     public void post(String url, String jsonParam, IOTPayCallback iotPayCallback) throws Exception{
         executeTask(
                 new Runnable() {

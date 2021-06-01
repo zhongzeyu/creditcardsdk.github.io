@@ -2,6 +2,7 @@ package iotpay.androidcredit.config;
 
 public enum IOTPayConfig {
     SimplePurchase,
-    AddCard
+    AddCard,
+    QueryOrder
 
 }

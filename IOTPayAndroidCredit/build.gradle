@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
-    id 'maven'
+    //id 'maven'
+    //id 'signing'
 }
 
 android {
@@ -31,70 +32,78 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+
 }
 
-//先定义变量
-//basic
-def POM_NAME="IOTPayAndroidCredit" //aar名称
-def POM_VERSION="1.0" //aar版本号
-def POM_ARTIFACTID="iotcreditsdk" //artifact ID
-def POM_GROUPID="iotpay.androidcredit" //Group ID
-def POM_PACKAGING="aar" //后缀
-def POM_DESCRIPTION="lib for consumer pay with credit/debit in merchant's app" //描述
+/*
+//apply plugin: 'maven'
+//apply plugin: 'signing'
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    //archiveClassifier.set("javadoc")
+    from javadoc
+}
 
-//licence
-def POM_LICENCE_NAME="The Apache License, Version 2.0"
-def POM_LICENCE_URL="http://www.apache.org/licenses/LICENSE-2.0.txt"
-def POM_LICENCE_DIST="repo"
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    //archiveClassifier.set("sources")
+    from sourceSets.main.allJava
+}
+artifacts {
+    archives javadocJar, sourcesJar
+}
 
-//code
-def POM_SCM_URL="https://github.com/"
-def POM_SCM_CONNECTION="https://github.com/zhongzeyu"
-def POM_SCM_DEV_CONNECTION="https://github.com/zhongzeyu"
-
-//developer
-def POM_DEVELOPER_ID="zhongzeyu"
-def POM_DEVELOPER_NAME="zhongzeyu"
-
-//nexues server
-def NEXUS_USERNAME="admin" //nexus username
-def NEXUS_PASSWORD="iotpay888666" //nexus password
-def NEXUS_REPOSITORY_URL="http://localhost:8081/repository/myTest/" //nexus repository url
-
-//上传脚本
+signing {
+    sign configurations.archives
+}
+group = "io.github.zhongzeyu.creditcardsdk"
+archivesBaseName = "creditcardsdk"
+version = "1.0.0"
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: NEXUS_REPOSITORY_URL) {
-                authentication(userName: NEXUS_USERNAME, password: NEXUS_PASSWORD)
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
             }
+
+            snapshotRepository(url: "https://s01.oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
             pom.project {
-                //name POM_NAME
-                version POM_VERSION
-                artifactId  POM_ARTIFACTID
-                groupId  POM_GROUPID
-                packaging  POM_PACKAGING
-                description  POM_DESCRIPTION
+                name 'IOTPay Android Credit SDK'
+                packaging 'aar'
+                // optionally artifactId can be defined here
+                description 'A lib used for consumer enter credit card info in Merchant app.'
+                url 'https://github.com/zhongzeyu/creditcardsdk.github.io'
 
                 scm {
-                    url POM_SCM_URL
-                    connection POM_SCM_CONNECTION
-                    developerConnection POM_SCM_DEV_CONNECTION
+                    connection 'scm:svn:https://github.com/zhongzeyu/creditcardsdk.github.io'
+
+                    developerConnection 'scm:svn:https://github.com/zhongzeyu/creditcardsdk.github.io'
+                    url 'https://github.com/zhongzeyu/creditcardsdk.github.io'
                 }
+
                 licenses {
                     license {
-                        name POM_LICENCE_NAME
-                        url POM_LICENCE_URL
-                        distribution POM_LICENCE_DIST
+                        name 'The Apache License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
                     }
                 }
+
                 developers {
                     developer {
-                        id POM_DEVELOPER_ID
-                        name POM_DEVELOPER_NAME
+                        id 'linuszhong'
+                        name 'Linus Zhong'
+                        email 'linuszhong@hotmail.com'
                     }
                 }
             }
         }
     }
 }
+
+*/
+
