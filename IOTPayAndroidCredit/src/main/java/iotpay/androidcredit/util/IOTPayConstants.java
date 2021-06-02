@@ -3,8 +3,8 @@ package iotpay.androidcredit.util;
 public enum IOTPayConstants {
     SUCCESS("SUCCESS"),
     FAIL("FAIL"),
-    //URLROOT("https://ccapi.iotpaycloud.com/v3/"),
-    URLROOT("https://ccdev.iotpaycloud.com/v3/"),
+    //URLROOT("https://ccapi.iotpaycloud.com/"),
+    URLROOT("https://ccdev.iotpaycloud.com/"),
     VISA("Visa"),
     MASTERCARD("MasterCard"),
     AMERICAN_EXPRESS("American_Express"),
@@ -29,6 +29,10 @@ public enum IOTPayConstants {
     CreditCardStyle("creditCardStyle"),
     PARAMS_MCHID("mchId"),
     PARAMS_MCHORDERNO("mchOrderNo"),
+    URL_PURCHASE("v3/cc_pfpurchase"),
+    URL_ADDCARD("v3/cc_pfaddcard"),
+    URL_QUERYORDER("cc/queryorder"),
+
     ;
     public final Object label;
     private IOTPayConstants(Object label){

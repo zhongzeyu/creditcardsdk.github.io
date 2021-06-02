@@ -13,6 +13,9 @@ import iotpay.androidcredit.util.IOTPayConstants;
 import iotpay.androidcredit.util.IOTPayHttpService;
 import iotpay.androidcredit.widgets.IOTCardInfoView;
 
+import static iotpay.androidcredit.util.IOTPayConstants.URL_ADDCARD;
+import static iotpay.androidcredit.util.IOTPayConstants.URL_PURCHASE;
+
 public class IOTPayService {
     private static String urlRoot = IOTPayConstants.URLROOT.label+"";
 
@@ -37,7 +40,7 @@ public class IOTPayService {
 
 
     public static void addCard(IOTPayCallback iotPayCallback, IOTCardInfoView creditForm, String secureId) throws Exception {
-        String url = urlRoot + "cc_pfaddcard";
+        String url = urlRoot + URL_ADDCARD.label;
         httpResult(url,iotPayCallback,creditForm,secureId);
     }
     private static void httpResult(String url, IOTPayCallback iotPayCallback, IOTCardInfoView creditForm, String secureId) throws Exception{
@@ -60,7 +63,7 @@ public class IOTPayService {
         iOTPayHttpService.post(url,params,iotPayCallback);
     }
     public static void pay(IOTPayCallback iotPayCallback, IOTCardInfoView creditForm, String secureId) throws Exception{
-        String url = urlRoot + "cc_pfpurchase";
+        String url = urlRoot + URL_PURCHASE.label;
         httpResult(url,iotPayCallback,creditForm,secureId);
     }
 }
