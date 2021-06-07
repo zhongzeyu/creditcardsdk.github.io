@@ -3,8 +3,8 @@ package iotpay.androidcredit.util;
 public enum IOTPayConstants {
     SUCCESS("SUCCESS"),
     FAIL("FAIL"),
-    //URLROOT("https://ccapi.iotpaycloud.com/"),
-    URLROOT("https://ccdev.iotpaycloud.com/"),
+    URLROOT("https://ccapi.iotpaycloud.com/"),
+    //URLROOT("https://ccdev.iotpaycloud.com/"),
     VISA("Visa"),
     MASTERCARD("MasterCard"),
     AMERICAN_EXPRESS("American_Express"),

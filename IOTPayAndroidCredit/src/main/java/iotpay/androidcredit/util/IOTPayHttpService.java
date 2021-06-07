@@ -31,10 +31,20 @@ public class IOTPayHttpService {
 
     private void queryOrder(String response, IOTPayCallback iotPayCallback, JSONObject jsonParam) throws Exception{
         if(gson == null){ gson = new Gson();}
-        IOTPayRes iotPayRes  = gson.fromJson(response, IOTPayRes.class);
-        if(iotPayRes != null && iotPayRes.retData != null && iotPayRes.retData != null
-                && iotPayRes.retData.status != null && !iotPayRes.retData.status.equals("2")
-                && !iotPayRes.retData.status.equals("3") && !iotPayRes.retData.status.equals("9") && queryCnt > 0){ //if order status is unknown, do order query.
+        IOTPayRes iotPayRes  = null;
+        try{
+            iotPayRes  = gson.fromJson(response, IOTPayRes.class);
+        }catch(Exception e){}
+
+        if(iotPayRes != null  //if order status is unknown, do order query.
+                && iotPayRes.retCode!= null
+                && iotPayRes.retCode.equals(IOTPayConstants.SUCCESS.label)
+                && iotPayRes.retData != null && iotPayRes.retData != null
+                && iotPayRes.retData.status != null
+                && !iotPayRes.retData.status.equals("2")
+                && !iotPayRes.retData.status.equals("3")
+                && queryCnt > 0){
+
             queryCnt--;
             //call order query afer one second
             Thread.sleep(1000);

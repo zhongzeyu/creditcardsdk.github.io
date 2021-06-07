@@ -97,10 +97,21 @@ IOTPayService.sendRequest(String secureId, Object layoutType, IOTCardInfoView cr
  try{
 IOTPayService.sendRequest(secureId,IOTPayConfig.SimplePurchase, iotCardInfoView,new IOTPayCallback(){
         public void onResultIOTPay(String result) {
-            //please process result in your own way, ex: showMsg("Payment Result:" + result);
-		 // if retCode is not SUCCESS, go to failed page
-		 // if result.retData.status in(2,3), go to success page
-		 // else, it means order status unknown, please robin call your server for order status, and your server query order status from IOTPay server. If the robin call over many seconds(Ex, over 30 secs) and the order status remains unknow, please involve support team to check the order status.
+            //please process result in your own way, Ex: as following;
+	    /*
+	     if retCode == FAIL
+	       go to failure page with retMsg,
+	         Ex: order payment failed, reason: ....., please retry....
+	     else if  retCode == SUCCESS
+	        check retData.status
+		  if status in(2,3)
+		    go to success page,
+		      Ex: Order payment successfull....
+		  else
+		     means order status is unknow, go to Order status Unknow page, and involve in 
+		     the support team for order final result.
+		       Ex: Order is processing, please call (xxx)xxx xxx for order[xxxxxxxxx] payment result.
+	    */
         }
       });
   }catch (Exception e){
